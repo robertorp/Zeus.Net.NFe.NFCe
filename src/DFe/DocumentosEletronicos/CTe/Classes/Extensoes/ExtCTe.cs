@@ -240,7 +240,7 @@ namespace DFe.DocumentosEletronicos.CTe.Classes.Extensoes
         /// </summary>
         /// <param name="cteOS"></param>
         /// <returns>Retorna um objeto do tipo CTe assinado</returns>
-        public static void Assina(this CTeOS.CTeOS cte, DFeConfig config, CertificadoDigital certificadoDigital, EventHandler<string> chaveAntesDeAssinarEventHandler, object enviador)
+        public static void Assina(this CTeOS.CTeOS cte, DFeConfig config, CertificadoDigital certificadoDigital, EventHandler<string> chaveAntesDeAssinarEventHandler = null, object enviador = null)
         {
             if (cte == null) throw new ArgumentNullException("cteOS");
 
