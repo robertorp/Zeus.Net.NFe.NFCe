@@ -18,7 +18,7 @@ namespace DFe.DocumentosEletronicos.CTe.Servicos.EnviarCTe
         public event EventHandler<AntesDeEnviarCteOs> AntesDeEnviarCteOs;
         public event EventHandler<AntesDeValidarSchema> AntesDeValidarSchema;
         public event EventHandler<AntesDeAssinar> AntesDeAssinar;
-        public event EventHandler<string> ChaveAntesDeAssinarEventHandler; 
+        public event EventHandler<ChaveAntesDeAssinarEventHandler> ChaveAntesDeAssinarEventHandler; 
 
         public CTeEnviarOS(DFeConfig dfeConfig, CertificadoDigital certificadoDigital)
         {

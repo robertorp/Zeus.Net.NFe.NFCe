@@ -100,6 +100,7 @@
     <Compile Include="DocumentosEletronicos\CTe\Servicos\EnviarCTe\AntesDeAssinar.cs" />
     <Compile Include="DocumentosEletronicos\CTe\Servicos\EnviarCTe\AntesDeEnviarCteOs.cs" />
     <Compile Include="DocumentosEletronicos\CTe\Servicos\EnviarCTe\AntesDeValidarSchema.cs" />
+    <Compile Include="DocumentosEletronicos\CTe\Servicos\EnviarCTe\ChaveAntesDeAssinarEventHandler.cs" />
     <Compile Include="DocumentosEletronicos\CTe\Servicos\EnviarCTe\CTeEnviarOS.cs" />
     <Compile Include="DocumentosEletronicos\CTe\Wsdl\Comunicacao\CTeConsultaProtocolo\CteConsulta.cs" />
     <Compile Include="DocumentosEletronicos\CTe\Wsdl\Comunicacao\CTeInutilizacao\CteInutilizacao.cs" />
