@@ -17,7 +17,8 @@ namespace DFe.DocumentosEletronicos.CTe.Servicos.EnviarCTe
         private readonly CertificadoDigital _certificadoDigital;
         public event EventHandler<AntesDeEnviarCteOs> AntesDeEnviarCteOs;
         public event EventHandler<AntesDeValidarSchema> AntesDeValidarSchema;
-        public event EventHandler<AntesDeAssinar> AntesDeAssinar; 
+        public event EventHandler<AntesDeAssinar> AntesDeAssinar;
+        public event EventHandler<string> ChaveAntesDeAssinarEventHandler; 
 
         public CTeEnviarOS(DFeConfig dfeConfig, CertificadoDigital certificadoDigital)
         {
@@ -32,7 +33,7 @@ namespace DFe.DocumentosEletronicos.CTe.Servicos.EnviarCTe
             cte.InfCte.infCTeNorm.infModal.versaoModal = versaoModal.veM300;
 
             OnAntesDeAssinar(new AntesDeAssinar(cte));
-            cte.Assina(_dfeConfig, _certificadoDigital);
+            cte.Assina(_dfeConfig, _certificadoDigital, ChaveAntesDeAssinarEventHandler, this);
 
             OnAntesDeValidarSchema(new AntesDeValidarSchema(cte));
             cte.ValidaSchema(_dfeConfig);
