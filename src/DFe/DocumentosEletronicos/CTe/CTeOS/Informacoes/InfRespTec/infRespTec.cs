@@ -6,5 +6,7 @@
         public string xContato { get; set; }
         public string email { get; set; }
         public string fone { get; set; }
+        public string hashCSRT { get; set; }
+        public string idCSRT { get; set; }
     }
 }
