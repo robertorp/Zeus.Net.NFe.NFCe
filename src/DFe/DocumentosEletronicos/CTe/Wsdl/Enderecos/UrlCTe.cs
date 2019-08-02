@@ -41,5 +41,7 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos
         public string CteRetRecepcao { get; set; }
         public string CteStatusServico { get; set; }
         public string CteRecepcaoOS { get; set; }
+        public string QrCode { get; set; }
+        public string ConsultaCTe { get; set; }
     }
 }

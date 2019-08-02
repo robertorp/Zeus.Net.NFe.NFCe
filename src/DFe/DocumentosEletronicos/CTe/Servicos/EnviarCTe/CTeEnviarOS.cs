@@ -35,7 +35,7 @@ namespace DFe.DocumentosEletronicos.CTe.Servicos.EnviarCTe
             OnAntesDeAssinar(new AntesDeAssinar(cte));
             cte.Assina(_dfeConfig, _certificadoDigital, ChaveAntesDeAssinarEventHandler, this);
 
-            cte.infCTeSupl = cte.QrCode(_certificadoDigital.ObterCertificadoDigital());
+            cte.infCTeSupl = cte.QrCode(_certificadoDigital.ObterCertificadoDigital(), _dfeConfig);
 
             OnAntesDeValidarSchema(new AntesDeValidarSchema(cte));
             cte.ValidaSchema(_dfeConfig);
