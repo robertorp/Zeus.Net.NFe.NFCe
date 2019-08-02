@@ -33,6 +33,7 @@ namespace DFe.Configuracao
         public abstract SecurityProtocolType ProtocoloDeSeguranca { get; set; }
 
         public abstract string CnpjEmitente { get; set; }
+        public bool IsContingenciaSvcAtiva { get; set; }
 
         public bool NaoSalvarXml()
         {

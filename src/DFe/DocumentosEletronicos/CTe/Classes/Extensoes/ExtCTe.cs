@@ -41,6 +41,7 @@ using DFe.Configuracao;
 using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.infCTeNormal.infModals;
 using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Tipos;
 using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.InfCTeNormal;
+using DFe.DocumentosEletronicos.CTe.Servicos.EnviarCTe;
 using DFe.DocumentosEletronicos.CTe.Validacao;
 using DFe.DocumentosEletronicos.Entidades;
 using DFe.DocumentosEletronicos.Flags;
@@ -240,7 +241,7 @@ namespace DFe.DocumentosEletronicos.CTe.Classes.Extensoes
         /// </summary>
         /// <param name="cteOS"></param>
         /// <returns>Retorna um objeto do tipo CTe assinado</returns>
-        public static void Assina(this CTeOS.CTeOS cte, DFeConfig config, CertificadoDigital certificadoDigital)
+        public static void Assina(this CTeOS.CTeOS cte, DFeConfig config, CertificadoDigital certificadoDigital, EventHandler<ChaveAntesDeAssinarEventHandler> chaveAntesDeAssinarEventHandler = null, object enviador = null)
         {
             if (cte == null) throw new ArgumentNullException("cteOS");
 
@@ -259,6 +260,7 @@ namespace DFe.DocumentosEletronicos.CTe.Classes.Extensoes
             cte.InfCte.versao = config.VersaoServico;
             cte.InfCte.ide.cDV = dadosChave.DigitoVerificador;
 
+            chaveAntesDeAssinarEventHandler?.Invoke(enviador, new ChaveAntesDeAssinarEventHandler(cte, dadosChave.Chave));
             var assinatura = AssinaturaDigital.Assina(cte, cte.InfCte.Id, certificadoDigital, config);
 
             cte.Signature = assinatura;

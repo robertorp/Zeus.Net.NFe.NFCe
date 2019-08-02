@@ -42,6 +42,17 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos.Helpers
     {
         public static UrlCTe ObterUrlServico(DFeConfig config)
         {
+            if (config.IsContingenciaSvcAtiva)
+            {
+                switch (config.TipoAmbiente)
+                {
+                    case TipoAmbiente.Producao:
+                        return UrlProducaoContingenciaSvc(config);
+                    case TipoAmbiente.Homologacao:
+                        return UrlHomologacaoContingenciaSvc(config);
+                }
+            }
+
             switch (config.TipoAmbiente)
             {
                 case TipoAmbiente.Homologacao:
@@ -51,6 +62,123 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos.Helpers
             }
 
             throw new InvalidOperationException("Tipo Ambiente inválido");
+        }
+
+        private static UrlCTe UrlHomologacaoContingenciaSvc(DFeConfig config)
+        {
+            switch (config.EstadoUf)
+            {
+                case Estado.RR:
+                case Estado.PE:
+                case Estado.AP:
+                case Estado.SP:
+                case Estado.MT:
+                case Estado.MS:
+                case Estado.AN:
+                    return new UrlCTe
+                    {
+                        CteRecepcao = @"https://cte-homologacao.svrs.rs.gov.br/ws/cterecepcao/CTeRecepcao.asmx",
+                        CteRetRecepcao = @"https://cte-homologacao.svrs.rs.gov.br/ws/cteretrecepcao/CTeRetRecepcao.asmx",
+                        CteInutilizacao = @"https://cte-homologacao.svrs.rs.gov.br/ws/cteinutilizacao/cteinutilizacao.asmx",
+                        CteConsulta = @"https://cte-homologacao.svrs.rs.gov.br/ws/cteconsulta/CTeConsulta.asmx",
+                        CteStatusServico = @"https://cte-homologacao.svrs.rs.gov.br/ws/ctestatusservico/CTeStatusServico.asmx",
+                        CteRecepcaoEvento = @"https://cte-homologacao.svrs.rs.gov.br/ws/cterecepcaoevento/CTeRecepcaoEvento.asmx",
+                        CteRecepcaoOS = @"https://cte-homologacao.svrs.rs.gov.br/ws/cterecepcaoos/cterecepcaoos.asmx"
+                    };
+                case Estado.AC:
+                case Estado.AL:
+                case Estado.AM:
+                case Estado.BA:
+                case Estado.CE:
+                case Estado.DF:
+                case Estado.ES:
+                case Estado.GO:
+                case Estado.MA:
+                case Estado.MG:
+                case Estado.PA:
+                case Estado.PB:
+                case Estado.PR:
+                case Estado.PI:
+                case Estado.RJ:
+                case Estado.RN:
+                case Estado.RS:
+                case Estado.RO:
+                case Estado.SC:
+                case Estado.SE:
+                case Estado.TO:
+                    return new UrlCTe
+                    {
+                        CteRecepcaoEvento = @"https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcaoEvento.asmx",
+                        CteRecepcao = @"https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcao.asmx",
+                        CteRetRecepcao = @"https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/CteRetRecepcao.asmx",
+                        CteConsulta = @"https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/CteConsulta.asmx",
+                        CteStatusServico = @"https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/CteStatusServico.asmx",
+                        CteRecepcaoOS = @"https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcaoOS.asmx",
+                    };
+
+                default:
+                    throw new InvalidOperationException(
+                        "Não achei a url do seu estado(uf), tente com outra unidade federativa");
+            }
+        }
+
+        private static UrlCTe UrlProducaoContingenciaSvc(DFeConfig config)
+        {
+            switch (config.EstadoUf)
+            {
+                case Estado.RR:
+                case Estado.PE:
+                case Estado.AP:
+                case Estado.SP:
+                case Estado.MT:
+                case Estado.MS:
+                    return new UrlCTe
+                    {
+                        CteStatusServico = @"https://cte.svrs.rs.gov.br/ws/ctestatusservico/CTeStatusServico.asmx",
+                        CteRetRecepcao = @"https://cte.svrs.rs.gov.br/ws/cteretrecepcao/CTeRetRecepcao.asmx",
+                        CteRecepcao = @"https://cte.svrs.rs.gov.br/ws/cterecepcao/CTeRecepcao.asmx",
+                        CteInutilizacao = @"https://cte.svrs.rs.gov.br/ws/cteinutilizacao/cteinutilizacao.asmx",
+                        CteRecepcaoEvento = @"https://cte.svrs.rs.gov.br/ws/cterecepcaoevento/CTeRecepcaoEvento.asmx",
+                        CteConsulta = @"https://cte.svrs.rs.gov.br/ws/cteconsulta/CTeConsulta.asmx",
+                        CteRecepcaoOS = @"https://cte.svrs.rs.gov.br/ws/cterecepcaoos/cterecepcaoos.asmx"
+                    };
+                case Estado.AC:
+                case Estado.AL:
+                case Estado.AM:
+                case Estado.BA:
+                case Estado.CE:
+                case Estado.DF:
+                case Estado.ES:
+                case Estado.GO:
+                case Estado.MA:
+                case Estado.MG:
+                case Estado.PA:
+                case Estado.PB:
+                case Estado.PR:
+                case Estado.PI:
+                case Estado.RJ:
+                case Estado.RN:
+                case Estado.RS:
+                case Estado.RO:
+                case Estado.SC:
+                case Estado.SE:
+                case Estado.TO:
+                case Estado.AN:
+                    return new UrlCTe
+                    {
+                        CteStatusServico = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteStatusServico.asmx",
+                        CteRetRecepcao = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRetRecepcao.asmx",
+                        CteRecepcao = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcao.asmx",
+                        CteInutilizacao = @"",
+                        CteRecepcaoEvento = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcaoEvento.asmx",
+                        CteConsulta = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteConsulta.asmx",
+                        CteRecepcaoOS = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcaoOS.asmx"
+                    };
+
+                default:
+                    throw new InvalidOperationException(
+                        "Não achei a url do seu estado(uf), tente com outra unidade federativa");
+            }
         }
 
         private static UrlCTe UrlProducao(DFeConfig config)
