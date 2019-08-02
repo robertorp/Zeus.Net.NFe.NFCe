@@ -278,6 +278,11 @@ namespace DFe.DocumentosEletronicos.CTe.Classes.Extensoes
             return chave;
         }
 
+        public static int AmbienteSefazInt(this CTeOS.CTeOS cte)
+        {
+            return (int) cte.InfCte.ide.tpAmb;
+        }
+
         public static void SalvarXmlEmDisco(this CteEletronica cte, DFeConfig config)
         {
             if (config.NaoSalvarXml()) return;

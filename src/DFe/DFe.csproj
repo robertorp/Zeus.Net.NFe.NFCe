@@ -79,6 +79,7 @@
     <Compile Include="DocumentosEletronicos\CTe\Classes\Retorno\Evento\CTeCancelado.cs" />
     <Compile Include="DocumentosEletronicos\CTe\Constantes\StatusAutorizacao.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\CTeOS.cs" />
+    <Compile Include="DocumentosEletronicos\CTe\CTeOS\Extensoes\extCteOs.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Extensoes\extretCteOS.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\Complemento\complOs.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\Identificacao\ideOs.cs" />
