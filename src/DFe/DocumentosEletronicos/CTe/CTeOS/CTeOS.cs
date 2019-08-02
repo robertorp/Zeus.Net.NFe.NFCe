@@ -20,6 +20,9 @@ namespace DFe.DocumentosEletronicos.CTe.CTeOS
         [XmlElement(ElementName = "infCte", Namespace = "http://www.portalfiscal.inf.br/cte")]
         public infCteOS InfCte { get; set; }
 
+        [XmlElement(ElementName = "infCTeSupl")]
+        public infCTeSupl infCTeSupl { get; set; }
+
         [XmlElement(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
 
