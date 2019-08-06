@@ -76,6 +76,8 @@ namespace DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Impostos
             set { _pIcmsInterPart = value.Arredondar(2); }
         }
 
+        public bool pICMSInterPartSpecified { get { return _pIcmsInterPart.HasValue; } }
+
         public decimal vFCPUFFim
         {
             get { return _vFcpufFim.Arredondar(2); }
