@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Xml.Serialization;
+using DFe.Ext;
 
 namespace DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.InfCTeNormal
 {
@@ -6,8 +8,22 @@ namespace DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.InfCTeNormal
     {
         public tpFretamento tpFretamento { get; set; }
 
+        [XmlIgnore]
         public DateTime? dhViagem { get; set; }
 
-        public bool dhViagemSpecified { get { return dhViagem.HasValue; } }
+        [XmlElement(ElementName = "dhViagem")]
+        public string ProxydhViagem
+        {
+            get
+            {
+                if (dhViagem == null) return null;
+
+                return dhViagem.Value.ParaDataHoraStringUtc();
+            }
+            set
+            {
+                dhViagem = Convert.ToDateTime(value);
+            }
+        }
     }
 }
