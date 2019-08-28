@@ -44,5 +44,8 @@ namespace DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.InfCTeNormal
 
         [XmlElement(ElementName = "veic")]
         public veicOs veic { get; set; }
+
+        [XmlElement(ElementName = "infFretamento")]
+        public infFretamentoOs infFretamento { get; set; }
     }
 }

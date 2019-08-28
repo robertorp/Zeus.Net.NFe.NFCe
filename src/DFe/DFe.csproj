@@ -84,6 +84,8 @@
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\Complemento\complOs.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\Identificacao\ideOs.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\Impostos\impOs.cs" />
+    <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\InfCTeNormal\infFretamentoOs.cs" />
+    <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\InfCTeNormal\tpFretamento.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\infCteOS.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\InfCTeNormal\infCTeNormOs.cs" />
     <Compile Include="DocumentosEletronicos\CTe\CTeOS\Informacoes\InfCTeNormal\infCteSubOs.cs" />
