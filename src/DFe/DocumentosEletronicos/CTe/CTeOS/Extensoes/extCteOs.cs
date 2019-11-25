@@ -25,7 +25,9 @@ namespace DFe.DocumentosEletronicos.CTe.CTeOS.Extensoes
             qrCode.Append("&");
             qrCode.Append("tpAmb=").Append(cteOs.AmbienteSefazInt());
 
-            if (cteOs.InfCte.ide.tpEmis != tpEmis.teNormal)
+            if (cteOs.InfCte.ide.tpEmis != tpEmis.teNormal 
+                && cteOs.InfCte.ide.tpEmis != tpEmis.teSVCSP
+                && cteOs.InfCte.ide.tpEmis != tpEmis.teSVCRS)
             {
                 var assinatura = Convert.ToBase64String(CreateSignaturePkcs1(certificadoDigital, encoding.GetBytes(cteOs.Chave())));
                 qrCode.Append("&sign=");

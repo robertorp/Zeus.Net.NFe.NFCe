@@ -135,19 +135,9 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos.Helpers
                 case Estado.AP:
                 case Estado.SP:
                 case Estado.MT:
+                    return ObterUrlComOutroQrCodeSVCRS(@"https://www.sefaz.mt.gov.br/cte/qrcode");
                 case Estado.MS:
-                    return new UrlCTe
-                    {
-                        CteStatusServico = @"https://cte.svrs.rs.gov.br/ws/ctestatusservico/CTeStatusServico.asmx",
-                        CteRetRecepcao = @"https://cte.svrs.rs.gov.br/ws/cteretrecepcao/CTeRetRecepcao.asmx",
-                        CteRecepcao = @"https://cte.svrs.rs.gov.br/ws/cterecepcao/CTeRecepcao.asmx",
-                        CteInutilizacao = @"https://cte.svrs.rs.gov.br/ws/cteinutilizacao/cteinutilizacao.asmx",
-                        CteRecepcaoEvento = @"https://cte.svrs.rs.gov.br/ws/cterecepcaoevento/CTeRecepcaoEvento.asmx",
-                        CteConsulta = @"https://cte.svrs.rs.gov.br/ws/cteconsulta/CTeConsulta.asmx",
-                        CteRecepcaoOS = @"https://cte.svrs.rs.gov.br/ws/cterecepcaoos/cterecepcaoos.asmx",
-                        QrCode = @"http://dfe-portal.svrs.rs.gov.br/cte/QRCode",
-                        ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos"
-                    };
+                    return ObterUrlComOutroQrCodeSVCRS(@"http://dfe-portal.svrs.rs.gov.br/cte/QRCode");
                 case Estado.AC:
                 case Estado.AL:
                 case Estado.AM:
@@ -158,6 +148,7 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos.Helpers
                 case Estado.GO:
                 case Estado.MA:
                 case Estado.MG:
+                    return ObterUrlComOutroQrCodeSVCSP(@"https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml");
                 case Estado.PA:
                 case Estado.PB:
                 case Estado.PR:
@@ -170,23 +161,44 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos.Helpers
                 case Estado.SE:
                 case Estado.TO:
                 case Estado.AN:
-                    return new UrlCTe
-                    {
-                        CteStatusServico = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteStatusServico.asmx",
-                        CteRetRecepcao = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRetRecepcao.asmx",
-                        CteRecepcao = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcao.asmx",
-                        CteInutilizacao = @"",
-                        CteRecepcaoEvento = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcaoEvento.asmx",
-                        CteConsulta = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteConsulta.asmx",
-                        CteRecepcaoOS = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcaoOS.asmx",
-                        QrCode = @"https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode",
-                        ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos"
-                    };
+                    return ObterUrlComOutroQrCodeSVCSP(@"https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode");
 
                 default:
                     throw new InvalidOperationException(
                         "Não achei a url do seu estado(uf), tente com outra unidade federativa");
             }
+        }
+
+        private static UrlCTe ObterUrlComOutroQrCodeSVCRS(string urlQrcode)
+        {
+            return new UrlCTe
+            {
+                CteStatusServico = @"https://cte.svrs.rs.gov.br/ws/ctestatusservico/CTeStatusServico.asmx",
+                CteRetRecepcao = @"https://cte.svrs.rs.gov.br/ws/cteretrecepcao/CTeRetRecepcao.asmx",
+                CteRecepcao = @"https://cte.svrs.rs.gov.br/ws/cterecepcao/CTeRecepcao.asmx",
+                CteInutilizacao = @"https://cte.svrs.rs.gov.br/ws/cteinutilizacao/cteinutilizacao.asmx",
+                CteRecepcaoEvento = @"https://cte.svrs.rs.gov.br/ws/cterecepcaoevento/CTeRecepcaoEvento.asmx",
+                CteConsulta = @"https://cte.svrs.rs.gov.br/ws/cteconsulta/CTeConsulta.asmx",
+                CteRecepcaoOS = @"https://cte.svrs.rs.gov.br/ws/cterecepcaoos/cterecepcaoos.asmx",
+                QrCode = urlQrcode,
+                ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos"
+            };
+        }
+
+        private static UrlCTe ObterUrlComOutroQrCodeSVCSP(string qrCode)
+        {
+            return new UrlCTe
+            {
+                CteStatusServico = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteStatusServico.asmx",
+                CteRetRecepcao = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRetRecepcao.asmx",
+                CteRecepcao = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcao.asmx",
+                CteInutilizacao = @"",
+                CteRecepcaoEvento = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteRecepcaoEvento.asmx",
+                CteConsulta = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/CteConsulta.asmx",
+                CteRecepcaoOS = @"https://nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcaoOS.asmx",
+                QrCode = qrCode,
+                ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos"
+            };
         }
 
         private static UrlCTe UrlProducao(DFeConfig config)
