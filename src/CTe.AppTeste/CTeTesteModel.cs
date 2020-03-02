@@ -478,7 +478,7 @@ namespace CTe.AppTeste
                     CaminhoArquivo = CaminhoArquivo,
                     NumeroDeSerie = NumeroDeSerie,
                     Senha = Senha,
-                    ManterEmCache = ManterCertificadoEmCache
+                    ManterEmCache = ManterCertificadoEmCache,
                 },
                 ConfigWebService =
                 {
@@ -609,7 +609,7 @@ namespace CTe.AppTeste
                 Serial = config.CertificadoDigital.NumeroDeSerie,
                 LocalArquivo = config.CertificadoDigital.CaminhoArquivo,
                 Senha = config.CertificadoDigital.Senha,
-                TipoCertificado = TipoCertificado.A1Arquivo
+                TipoCertificado = TipoCertificado.A1Repositorio
             };
 
 

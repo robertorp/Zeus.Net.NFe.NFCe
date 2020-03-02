@@ -215,7 +215,8 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos.Helpers
                         CteRecepcaoEvento = "https://cte.sefaz.mt.gov.br/ctews2/services/CteRecepcaoEvento?wsdl",
                         CteConsulta = @"https://cte.sefaz.mt.gov.br/ctews/services/CteConsulta",
                         QrCode = @"https://www.sefaz.mt.gov.br/cte/qrcode",
-                        ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos"
+                        ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos",
+                        CteRecepcaoOS = @"https://cte.sefaz.mt.gov.br/ctews/services/CteRecepcaoOS" 
                     };
                 case Estado.MS:
                     return new UrlCTe
@@ -228,7 +229,7 @@ namespace DFe.DocumentosEletronicos.CTe.Wsdl.Enderecos.Helpers
                         CteConsulta = @"https://producao.cte.ms.gov.br/ws/CteConsulta",
                         CteRecepcaoOS = @"https://producao.cte.ms.gov.br/ws/CteRecepcaoOS",
                         QrCode = @"http://www.dfe.ms.gov.br/cte/qrcode",
-                        ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos"
+                        ConsultaCTe = @"https://dfe-portal.svrs.rs.gov.br/CTe/Servicos",
                     };
                 case Estado.MG:
                     return new UrlCTe
